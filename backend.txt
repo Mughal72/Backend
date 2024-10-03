@@ -1,0 +1,57 @@
+
+Backend Tutorial 
+
+=> NodeJs Intro
+Node.js is a runtime of javascript buitl on chrome's V8 JS engine.
+Node.js is designed to build scalable network applications.
+Node.js is free and open ource server environment 
+Node.js allows us to run js on the server
+Node.js can run on multiple OS.
+
+=> Why use Node.js?
+you can use JS in the entire stack
+Mnay famous comapnies use node.js as their backend
+Nodejs come with a lot of useful built in modules
+Node.js is a fast
+
+ctr+c server restart
+
+node.js REPL (REPL = Read-Eval-Print-Loop  )
+eg. > a = 30
+30
+> c = 34
+34
+> a+c
+64
+> .exit
+
+_ is a pevious evaluated variable 
+eg: > a = 34
+34
+> _
+34
+
+=> Tut -70: Installing Express and Postman 
+What is Postman?
+
+Postman is an app that is used to collect all the get and post requests through a custom URL sent by the user. It minimizes our work by not allowing us to write JavaScript in the Node application. We can also skip fetching all the APIs with the help of Postman.
+You can also create your own Postman
+
+What is Express?
+
+Before understanding Express, make a new folder as express and write cd > express in the terminal to get inside the folder. Now we will call the NPM package by writing npm init. Inside the express folder, we will now make a new file as app.js to keep all the express files. To install express, we will write npm install express in the terminal window. 
+
+Express.js is a web application framework for Node.js, released as free and open-source software. It is designed for building web applications and APIs. Simply, it creates custom backends automatically for us as per our requirements. For example, in the last few lectures, we learned to create custom backends for different pages like about us, contact us and services. But express creates the servers for these pages automatically for us.
+
+Moreover, it handles all the routings for us and also simplifies all the process in the web development for us. Some of the big multinational companies like Uber, Myntra, and IBM use Express for their web applications. Therefore, it is probably one of the best open-source web application frameworks.
+
+// express is a web application framework for nodejs, Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+// It provides mechanisms to: Write handlers for requests with different HTTP verbs at different URL paths (routes)
+
+Tut-72:  Static Files & Installing Pug template engine
+Static files are the public files that we want to keep on our server so that anyone can download or use it. 
+directly access without login to your website
+
+
+Tut-73: Using raw HTML in Pug template engine 
+

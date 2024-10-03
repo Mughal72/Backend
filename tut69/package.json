@@ -1,0 +1,21 @@
+{
+  "name": "tut69",
+  "version": "1.0.0",
+  "description": "npm is the world largest oftware regitery",
+  "main": "tut69.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Awesome"
+  ],
+  "author": "Anber Sattar",
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^16.5.0",
+    "slugify": "~1.3.5"
+  },
+  "devDependencies": {
+    "nodemon": ">1.0.1"
+  }
+}

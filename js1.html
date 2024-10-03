@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+function MyArray(){
+    this.arr=[];
+
+}
+
+MyArray.prototype.MapAsync = async function(callback){
+    const result = await Promise.all(this.arr.map(callback));
+    const newArray = new MyArray();
+    newArray.arr = result;
+    return newArray;
+}
+const myArray = new MyArray();
+myArray.arr.push(1,2,3,4,5);
+async function asyncDouble(num){
+    return new Promise (resolve=>{
+        setTimeout(()=>{
+            resolve(num*2);
+        },1000);
+    });
+}
+
+</script>
+</html>

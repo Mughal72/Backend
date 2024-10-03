@@ -1,0 +1,42 @@
+
+Backend Tutorial 
+
+=> NodeJs Intro
+Node.js is a runtime of javascript buitl on chrome's V8 JS engine.
+Node.js is designed to build scalable network applications.
+Node.js is free and open ource server environment 
+Node.js allows us to run js on the server
+Node.js can run on multiple OS.
+
+=> Why use Node.js?
+you can use JS in the entire stack
+Mnay famous comapnies use node.js as their backend
+Nodejs come with a lot of useful built in modules
+Node.js is a fast
+
+ctr+c server restart
+
+node.js REPL (REPL = Read-Eval-Print-Loop  )
+eg. > a = 30
+30
+> c = 34
+34
+> a+c
+64
+> .exit
+
+_ is a pevious evaluated variable 
+eg: > a = 34
+34
+> _
+34
+
+=> Tut64: Node.js Modules with Examples
+
+
+
+
+
+
+
+
