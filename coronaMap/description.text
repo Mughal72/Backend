@@ -1,2 +1,153 @@
-## Plotting CoronaVirus Cases On World Map - Interactive Dashboard Using JavaScript & MapBox
-plot Coronavirus Cases on World Map using JavaScript and Mapbox
+### **Project Documentation: Interactive COVID-19 Map Using Leaflet.js and OpenStreetMap**
+
+---
+
+#### **Project Overview**
+This project is an interactive dashboard that visualizes the spread of COVID-19 cases across various countries using **Leaflet.js** and **OpenStreetMap**. It displays markers on a world map based on real-time data from a JSON file, with country-specific details such as the number of cases. The map allows users to search for a country, zoom in, and display the case numbers in a popup.
+
+---
+
+#### **Technologies Used**
+- **HTML5**: Structuring the webpage.
+- **CSS3**: Basic styling and layout of the map and search box.
+- **JavaScript (ES6)**: Fetching and processing data, updating map markers, and handling search functionality.
+- **Leaflet.js**: A lightweight JavaScript library for mobile-friendly interactive maps.
+- **OpenStreetMap (OSM)**: Free and open map tiles used as the base layer.
+
+---
+
+#### **Features**
+1. **Interactive Map**:
+   - Displays global COVID-19 cases with markers for each country.
+   - Marker colors indicate the severity of the outbreak in each country.
+   - Clicking a marker shows the country name and the total number of cases in a popup.
+
+2. **Country Search Functionality**:
+   - Users can search for any country by name.
+   - If the country is found, the map zooms in on that country and displays the corresponding COVID-19 information.
+   - A popup highlights the number of cases for the selected country.
+
+3. **Dynamic Data Fetching**:
+   - Fetches real-time data from `data.json` file and plots it on the map.
+   - The data includes country names, latitude, longitude, and infected case numbers.
+
+---
+
+#### **Project Structure**
+
+```
+/project-directory
+    ├── index.html
+    ├── index.js
+    ├── data.json
+    └── styles.css
+```
+
+1. **index.html**:  
+   The main HTML file that defines the layout of the webpage, the search bar, and the map container.
+
+2. **index.js**:  
+   The JavaScript file that:
+   - Initializes the map using Leaflet.js.
+   - Fetches the COVID-19 data from the `data.json` file.
+   - Adds markers to the map and binds popups to the markers.
+   - Implements the search functionality to locate and zoom to a specific country.
+
+3. **data.json**:  
+   A sample JSON file containing country-wise COVID-19 data, with fields for country name, latitude, longitude, and infected cases.
+
+---
+
+#### **Installation & Setup**
+
+1. **Clone or Download the Project**:
+   - Clone the repository or download the project files to your local machine.
+   ```
+   git clone https://github.com/your-repo-name/interactive-covid-map.git
+   ```
+
+2. **Open `index.html` in a Web Browser**:
+   - Open the `index.html` file in any modern web browser (e.g., Chrome, Firefox, Edge).
+
+3. **Test Search Functionality**:
+   - In the search field, type the name of a country and click the "Search" button.
+   - The map will zoom into the country's location if the country exists in the `data.json`.
+
+---
+
+#### **How the Map Works**
+
+1. **Map Initialization**:
+   - The map is initialized using Leaflet's `L.map()` method and is centered to show the entire world initially (`setView([20.0, 10.0], 2)`).
+
+2. **Adding OpenStreetMap Tile Layer**:
+   - Leaflet.js uses the free OpenStreetMap tile layer to provide map tiles.
+   ```javascript
+   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+       attribution: '&copy; OpenStreetMap contributors'
+   }).addTo(map);
+   ```
+
+3. **Fetching and Updating Map Data**:
+   - The data is fetched from a `data.json` file using JavaScript’s `fetch` API.
+   - Each country’s data (latitude, longitude, number of infected) is used to plot markers.
+   ```javascript
+   fetch('data.json')
+       .then(response => response.json())
+       .then(data => {
+           data.data.forEach(element => {
+               let latitude = element.latitude;
+               let longitude = element.longitude;
+               let cases = element.infected;
+
+               let color = cases > 255 ? "rgb(255, 0, 0)" : `rgb(${cases}, 0, 0)`;
+
+               L.circleMarker([latitude, longitude], {
+                   color: color,
+                   radius: 5
+               }).addTo(map)
+                 .bindPopup(`<strong>${element.country}</strong><br>Cases: ${cases}`);
+           });
+       });
+   ```
+
+4. **Search Functionality**:
+   - A search bar is provided to allow users to search for a specific country.
+   - When a valid country is found, the map zooms to that location using `map.setView()` and shows the country information in a popup.
+   ```javascript
+   function searchCountry() {
+       let countryName = document.getElementById('countrySearch').value.trim().toLowerCase();
+       let country = countryData.find(element => element.country.toLowerCase() === countryName);
+
+       if (country) {
+           let latitude = country.latitude;
+           let longitude = country.longitude;
+           map.setView([latitude, longitude], 5);
+           L.popup().setLatLng([latitude, longitude])
+              .setContent(`<strong>${country.country}</strong><br>Cases: ${country.infected}`)
+              .openOn(map);
+       } else {
+           alert('Country not found! Please check the spelling or try another country.');
+       }
+   }
+   ```
+
+---
+
+#### **Future Improvements**
+- **Real-time API Integration**: Replace the static `data.json` with a live COVID-19 API to fetch up-to-date information.
+- **Enhanced Search**: Improve the search function to handle misspellings and provide country suggestions as the user types.
+- **Dark Mode**: Implement a dark mode feature to make the map visually appealing in low-light environments.
+- **Additional Data Visualization**: Add more information such as recovered cases, death tolls, or vaccination rates to provide a more comprehensive dashboard.
+
+---
+
+#### **Credits**
+- **Leaflet.js**: Open-source library for interactive maps.
+- **OpenStreetMap**: Free and open geographic data used for map tiles.
+- **COVID-19 Data**: Example data fetched from a hypothetical `data.json` file.
+
+---
+
+#### **Conclusion**
+This project is a simple but effective way to visualize COVID-19 cases on a world map using free and open tools. By utilizing Leaflet.js and OpenStreetMap, we avoid the need for paid services while maintaining interactive map functionality.
